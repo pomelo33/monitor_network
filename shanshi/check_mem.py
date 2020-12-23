@@ -16,7 +16,7 @@ def Monitor(HOST,PORT,USER,PASSWORD):
     for cmd in cmds:
         command = ssh_shell.sendall(cmd)
         time.sleep(1)
-        res = ssh_shell.recv(999999).decode()
+        res = ssh_shell.recv(9999).decode()
     ssh.close()
     value = ''
     result = re.findall("memory utilization.*",res)

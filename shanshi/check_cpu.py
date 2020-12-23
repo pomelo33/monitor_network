@@ -17,9 +17,13 @@ def Monitor(HOST,PORT,USER,PASSWORD):
         command = ssh_shell.sendall(cmd)
         time.sleep(1)
         res = ssh_shell.recv(9999).strip().decode()
+    # 定义空字符串
     value = ""
+    # 正则查找res中包含关键字的一行
     result = re.findall("Last 15.*",res)
+    # list to str
     value =  "".join(result).replace(" ","")
+    # 切割str
     value = re.split(":",value)
     print("CPU最后15分钟使用率: " + value[1])
 

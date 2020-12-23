@@ -20,9 +20,11 @@ def Monitor(HOST,PORT,USER,PASSWORD):
     ssh.close()
     value = []
     result = ""
+    # 过滤多余的行
     for line in res:
         if line.find("show") == -1 and line.find("#") == -1:
             value = value +  line.split()
+    # 循环列表
     for i in range(0,len(value),2):
         result =  result + "Name:" + value[i] + " State:" + value[i+1]
     print(result)

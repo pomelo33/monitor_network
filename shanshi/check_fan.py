@@ -19,6 +19,7 @@ def Monitor(HOST,PORT,USER,PASSWORD):
         res = ssh_shell.recv(9999).decode().split("\r\n")
     ssh.close()
     for line in res:
+        # 过滤多余的行
         if line.find("show") == -1 and line.find("#") == -1 and line.find("information") == -1:
             result = line.split()
             print("Name:" + result[0] + " " + "状态:" + result[1])

@@ -21,12 +21,13 @@ def Monitor(HOST,PORT,USER,PASSWORD):
     result = re.findall("Uptime.*",res,flags=re.MULTILINE)
     value = ""
     value = "".join(result)
+    # 判断days关键字是否存在于字符串中
     if "days" in value:
         value = value.split("is")
         value = value[1].split("days")
-        print(value[0].strip())
+        print("设备运行的天数为:" + value[0].strip())
     else:
-        print("0")
+        print("设备运行的天数为:0")
 
 if __name__ == "__main__":
     HOST = sys.argv[1]
